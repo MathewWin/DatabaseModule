@@ -13,7 +13,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="TEMP_F"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +26,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="HUM_F"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tempFEditText" />
@@ -37,7 +39,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="PRESS_F"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/humFEditText" />
@@ -49,7 +52,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="ENERGY_F"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pressFEditText" />
@@ -61,7 +65,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="TIMESTAMP"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/energyFEditText" />

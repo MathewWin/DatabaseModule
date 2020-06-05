@@ -3,13 +3,14 @@ package com.example.databasemodule.Views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.databasemodule.AppDatabase;
+import com.example.databasemodule.ValueFilter;
 import com.example.databasemodule.Controllers.MeasurementDao;
-import com.example.databasemodule.Controllers.UserDao;
 import com.example.databasemodule.Executor;
 import com.example.databasemodule.Models.Measurement;
 import com.example.databasemodule.Models.User;
@@ -50,18 +51,37 @@ public class AddMeasurementActivity extends AppCompatActivity {
         measurementDao = mAppDatabase.measurementDao();
 
         tempEditText = findViewById(R.id.tempEditText);
+        validate(tempEditText);
         humEditText = findViewById(R.id.humEditText);
+        validate(humEditText);
         pressEditText = findViewById(R.id.pressEditText);
+        validate(pressEditText);
         batVEditText = findViewById(R.id.batVEditText);
+        validate(batVEditText);
+        batVEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "9" )}) ;
         batIEditText = findViewById(R.id.batIEditText);
+        validate(batIEditText);
+        batVEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "9" )}) ;
         solarVEditText = findViewById(R.id.solarVEditText);
+        validate(solarVEditText);
+        solarVEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "45" )}) ;
         solarIEditText = findViewById(R.id.solarIEditText);
+        validate(solarIEditText);
+        solarIEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "9" )}) ;
         nodeUEditText = findViewById(R.id.nodeUEditText);
+        validate(nodeUEditText);
+        nodeUEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "100" )}) ;
         nodeIEditText = findViewById(R.id.nodeIEditText);
+        validate(nodeIEditText);
+        nodeIEditText.setFilters( new InputFilter[]{ new ValueFilter( "1" , "9" )}) ;
 
         myDataset = new ArrayList();
+    }
 
-
+    private void validate(EditText editText) {
+        if( editText.length() == 0 ){
+            editText.setError( "Field is required!" );
+        }
     }
 
     public void addMesurementToDatabase(View view) {
