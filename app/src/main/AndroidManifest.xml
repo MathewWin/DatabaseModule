@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".Views.DownloadConfigActivity"></activity>
+        <activity android:name=".Views.DownloadConfigActivity" />
         <activity android:name=".Views.DownloadMeasurementsActivity" />
+        <activity android:name=".Views.AddNotificationActivity" />
         <activity android:name=".Views.AddMeasurementActivity" />
         <activity android:name=".Views.AddConfigActivity" />
         <activity android:name=".Views.DownloadUsersActivity" />

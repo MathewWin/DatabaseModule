@@ -36,25 +36,49 @@ public class AddUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
 
         //Wstrzykiwanie bazy danych oraz odpowiedniego Dao
-        ((TestApplication)getApplication()).getComponent().inject(this);
+        ((TestApplication) getApplication()).getComponent().inject(this);
         userDao = mAppDatabase.userDao();
 
         loginEditText = (EditText) findViewById(R.id.loginEditText);
+        validate(loginEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        validate(passwordEditText);
         adminCheckBox = (CheckBox) findViewById(R.id.adminCheckBox);
     }
 
-    public void addUserToDatabase(View view) {
-        sendUserToDatabase();
-        Toast.makeText(this, "Użytkownik został dodany do bazy", Toast.LENGTH_SHORT).show();
+    private void validate(EditText editText) {
+        if (editText.length() == 0) {
+            editText.setError("Field is required!");
+        }
     }
 
-    public void sendUserToDatabase() {
+    public void addUserToDatabase(View view) {
+        boolean success = false;
+        try {
+            sendUserToDatabase();
+            success = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (success) {
+            Toast.makeText(this, "Użytkownik został dodany do bazy", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Uzupełnij pola.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void sendUserToDatabase() throws Exception {
         User user = new User();
 
-        user.login = loginEditText.getText().toString();
-        user.password = passwordEditText.getText().toString();
-        user.isAdmin = adminCheckBox.isChecked();
+        if (loginEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("")) {
+            throw new Exception("Pole login lub haslo jest puste.");
+        } else {
+            user.login = loginEditText.getText().toString();
+            user.password = passwordEditText.getText().toString();
+            user.isAdmin = adminCheckBox.isChecked();
+        }
 
         //Użycie Dao za pomocą wątku Executor
         //Przykład użycia w klasie Executor

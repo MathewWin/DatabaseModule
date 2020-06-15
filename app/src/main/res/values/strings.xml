@@ -26,6 +26,10 @@
             Press SHOW LOG to view log data
         ]]>
     </string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="send_on_channel_1">Send on Channel 1</string>
+    <string name="send_on_channel_2">Send on Channel 2</string>
 
     <string-array name="variables">
         <item>TEMP</item>
